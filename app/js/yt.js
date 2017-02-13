@@ -62,8 +62,9 @@ app.partial.yt = function(){
 
 		}).trigger('resize');
 
-		$('.otv .poster .play').on('click', function(){
+		$('.otv .poster .play').one('click', function(){
 			player.seekTo(16);
+		}).on('click', function(){
 			var playing = $('.otv .poster').hasClass('fade in');
 			if(!playing){
 				$('.otv .poster').css('background-image', 'none');
