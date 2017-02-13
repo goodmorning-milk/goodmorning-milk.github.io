@@ -16,6 +16,7 @@
 
     <!-- build:css css/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -45,11 +46,19 @@
       </a>
 
       <!--中文選單-->
-      <nav class="visible-zh pull-right">
-        <a href="javascript:" data-href="javascript:">office專業裝忙版</a>
-        <a href="javascript:" data-href="javascript:">裝忙教學影片</a>
-        <a href="javascript:" data-href="javascript:">活動辦法</a>
-        <a href="javascript:" data-href="javascript:">得獎名單</a>
+      <nav class="visible-zh pull-right fontsize-26">
+        <a href="javascript:" data-href="javascript:">
+          <span>office專業裝忙版</span>
+        </a>
+        <a href="javascript:" data-href="javascript:">
+          <span>裝忙教學影片</span>
+        </a>
+        <a href="javascript:" data-href="javascript:">
+          <span>活動辦法</span>
+        </a>
+        <a href="javascript:" data-href="javascript:">
+          <span>得獎名單</span>
+        </a>
       </nav>
       <!--./中文選單-->
 
@@ -113,7 +122,7 @@
                 <figcaption class="vertical-middle">
                   <img data-src="img/videos/word-icon.png">
                   <span class="fontsize-42">字戀狂上身</span>
-                  <a href="javascript:" class="fontsize-26">
+                  <a href="javascript:" data-href="wEvR4P6jSEo" class="fontsize-26">
                     開始裝忙<img data-src="img/arrow.png">
                   </a>
                 </figcaption>
@@ -173,8 +182,16 @@
         </section>
 
         <section class="otv">
-          <!-- <figure class="player"><iframe src="https://www.youtube.com/embed/ESkt47Sj15I?modestbranding=1&iv_load_policy=3&enablejsapi=1&version=3&controls=0&showinfo=0&loop=1&vq=hd720&playlist=ESkt47Sj15I" frameborder="0" allowfullscreen></iframe></figure> -->
-          <figure class="poster" data-src="img/videos/otv-poster.png">
+          <figure class="player">
+            <iframe src="https://www.youtube.com/embed/wEvR4P6jSEo?modestbranding=1&iv_load_policy=3&enablejsapi=1&version=3&controls=0&showinfo=0&loop=1&vq=hd720&playlist=wEvR4P6jSEo" frameborder="0" allowfullscreen></iframe>
+            <figure class="duration hidden-xs">
+              <i class="downloaded">
+                <i class="played">
+                </i>
+              </i>
+            </figure>
+          </figure>
+          <figure class="poster fade in" data-src="img/videos/otv-poster.png">
             <a class="play" href="javascript:">
               <figure data-src="img/videos/otv-play.png"></figure>
             </a>
@@ -205,6 +222,7 @@
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -229,6 +247,7 @@
     <script src="js/spa.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/ga.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/yt.js"></script>
     <!-- endbuild -->
   </body>

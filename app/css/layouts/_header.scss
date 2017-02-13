@@ -47,5 +47,56 @@ header {
 	nav{
 		height: 0;
 		overflow-y: hidden;
+		margin-top: 44px;
+		position: relative;
+		width: 230px;
+		text-align: right;
+		line-height: 0.85em;
+
+		a{
+			display: inline-block;	
+			padding: 0.5em 0.5em;
+			background: rgba(0,0,0,0.7);
+			// transition-delay: 0.1s;
+			transition-duration: 0.75s;
+			transition-property: background color transform;
+			width: 100%;
+			overflow: hidden;
+			line-height: 1em;
+			right: 0;
+			text-align: left;
+			transform: scaleX(0);
+			transform-origin: right center 1px; 
+			opacity: 0;
+			&:hover{
+				background: rgba(255,255,255,0.7);
+			}
+			span{
+				font-weight: 100;
+				width: 210px;
+				display: block;
+				height: 1em;
+			}
+		}
+		&.on{
+			height: 230px;
+			a{
+				width: 100%;
+				transform: none; 
+				opacity: 1;
+				&:nth-child(1){
+					transition: background 0.15s linear 0s, color 0.15s linear 0s, transform 0.25s ease-out 0s, opacity 0.25s linear 0s;
+				}
+				&:nth-child(2){
+					transition: background 0.15s linear 0s, color 0.15s linear 0s, transform 0.25s ease-out 0.05s, opacity 0.25s linear 0.05s;
+				}
+				&:nth-child(3){
+					transition: background 0.15s linear 0s, color 0.15s linear 0s, transform 0.25s ease-out 0.1s, opacity 0.25s linear 0.1s;
+				}
+				&:nth-child(4){
+					transition: background 0.15s linear 0s, color 0.15s linear 0s, transform 0.25s ease-out 0.15s, opacity 0.25s linear 0.15s;
+				}
+			}
+		}
 	}
 }

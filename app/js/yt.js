@@ -23,67 +23,27 @@ app.partial.yt = function(){
 		var players = [];
 		
 		// console.log(1);
-		$('.home .video').each(function(i){
-
-			$('iframe', this).attr('id', 'player' + i);
-			var player = new YT.Player('player' + i);
-
-			players.push(player);
-
-			// $(this).on('click', function(){
-			// 	player.carouselPlay();
-			// });
-
-			player.pe = this;
-
-			// console.log(this);
-			$(this).on('mousemove', function(){
-				// console.log(player.getPlayerState)
-				playing = player;
-				$(player.pe).addClass('playing');
-				$('.home playing-' + $(player.pe).index());
-				player.playVideo();
-			});
-			$(this).on('mouseout', function(){
-				// console.log(player.getPlayerState)
-				$(player.pe).removeClass('playing');
-				player.pauseVideo();
-			});
-
-				// player.playVideo();
-				// player.pauseVideo();
-			var wait4loop = setInterval(function(){
-				if($(window).width() <= 768 || $('html.ios').length){
-					clearInterval(wait4loop);
-				}
-				if(!player.playVideo){
-					return;
-				}
-				player.playVideo();
-				setTimeout(function(){					
-					player.pauseVideo();
-				}, 500);
-				clearInterval(wait4loop);
-			}, 100);
-		});
+		$('.otv iframe').attr('id', 'otv');
+		var player = new YT.Player('otv');
+		player.pe = $('.otv');
 
 
-		init();
+		init(player);
 
 	};
 
 	var idleTimeout = 0;
-	$('.home').addClass('idle').on('mousemove', function(e){
+	$('.otv .player').addClass('idle');
+	$('.otv .poster').on('mousemove', function(e){
 		// console.log('mousemove')
 		clearTimeout(idleTimeout);
-		$('.home').removeClass('idle');
+		$('.otv .player').removeClass('idle');
 		idleTimeout = setTimeout(function(){
-			playing.pauseVideo();
-			$('.home').addClass('idle');
-		}, 5000);
+			$('.otv .player').addClass('idle');
+		}, 1500);
 	});
 
-	function init(){
+	function init(player){
 
 
 		$(window).on('resize', function(){
@@ -92,34 +52,46 @@ app.partial.yt = function(){
 			var w = $(window).width(),
 				h = $(window).innerHeight() || $(window).height(),
 				ratio = 16 / 9;
-			w /= 3;
-			h /= 2;
+			// w /= 3;
+			// h /= 2;
 
 			var iframeX = 0,
 				iframeY = 0,
 				iframeW = w,
 				iframeH = h;
-			// console.log(w);
-
-
-			if(w / h >= ratio){
-				iframeH = w / ratio;
-				iframeW = w;
-				iframeY = ((w / ratio - h) / 2 * -1);
-				iframeX = 0;
-			}else{
-				iframeH = h;
-				iframeW = h *  ratio + 2;
-				iframeY = 0;
-				iframeX = ((h *  ratio - w) / 2 * -1);
-
-			}
-			$('.home .video .player,.home .video .poster').height(iframeH).width(iframeW)
-				.css('margin-top', iframeY)
-				.css('margin-left', iframeX);
-			// $('.slick-dots').remove();
-			// $('.video-background .video-container').slick('reinit');
+				
 		}).trigger('resize');
+
+		$('.otv .poster .play').on('click', function(){
+			player.seekTo(16);
+			var playing = $('.otv .poster').hasClass('fade in');
+			if(!playing){
+				$('.otv .poster').css('background-image', 'none');
+				$('.otv .poster').addClass('fade in');
+				player.pauseVideo();				
+			}else{
+				$('.otv .poster').addClass('fade').removeClass('in');
+				TweenMax.to('html, body', 0.5, {
+					scrollTop: $('.otv').offset().top
+				});
+				player.playVideo();
+
+				var fragTick = 0;
+				var totalTime = player.getDuration();
+
+				clearInterval(fragTick);
+				fragTick = setInterval(function(){
+					var fragPercent = player.getVideoLoadedFraction() * 100;
+					var currentTime = player.getCurrentTime();
+					var played = currentTime/totalTime * 100;
+					$('.duration .played', $('.player')).width(played + '%');
+
+					if(fragPercent < 100){
+						$('.duration .downloaded', $('.player')).width(fragPercent + '%');
+					}
+				}, 25);
+			}
+		});
 	}
 
 
