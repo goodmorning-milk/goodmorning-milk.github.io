@@ -43,4 +43,9 @@ header {
 			bottom: -5em;
 		}
 	}
+
+	nav{
+		height: 0;
+		overflow-y: hidden;
+	}
 }
