@@ -4,4 +4,47 @@ header {
 	a{
 		color: #fff;
 	}
+	height: 44px;
+	background: #000;
+	width: 100%;
+
+	.avatar{
+		background: #fff;
+		display: inline-block;
+	}
+
+	.burger{
+		position: absolute;
+		right: 0.5em;
+		height: 100%;
+	}
+
+	i.menu{
+		color: #fff;
+		background: #fff;
+
+		height: em(1,7);
+		width: em(15,7);
+		display: inline-block;
+		position: relative;
+
+		&:before,&:after{
+			background: #fff;
+			position: absolute;
+			top: em(-5,7);
+			width: 100%;
+			height: em(1,7);
+			display: block;
+			content: '';
+		}
+		&:after{
+			top: auto;
+			bottom: em(-5,7);
+		}
+	}
+
+	nav{
+		height: 0;
+		overflow-y: hidden;
+	}
 }
