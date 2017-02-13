@@ -119,16 +119,48 @@
 			@include SubItem();
 			background-position: center;
 			background-size: cover;
+			&:hover{
+				figcaption{
+					height: 84px;	
+					>img{
+						opacity: 1;
+					}				
+				}
+			}
 			figcaption{
 				color: #fff;
 				position: absolute;
 				bottom: 0;
-				height: 84px;
+				// height: 84px;
+				transition-duration: 0.5s;
+				height: 0;
 				width: 100%;
 				background: rgba(78,78,78,0.73);
+				overflow: hidden;
+				>img{
+					opacity: 0;
+					transition-duration: 0.5s;
+				}
 				span{
 					font-weight: 300;
 					line-height: 2em;
+				}
+
+				a{
+					position: absolute;
+					right: 0.5em;
+					letter-spacing: 0.2em;
+					height: 100%;
+					vertical-align: middle;
+					line-height: em(84,26);
+					color: #fff;
+					font-weight: 100;
+					opacity: 0.9;
+					&:hover{
+						color: inherit;
+						opacity: 1;
+						transition-duration: 0.3s;
+					}
 				}
 			}
 		}
@@ -218,6 +250,7 @@
 		position: relative;
 	}
 	figure{
+		background-size: 100% auto;
 		@include Item(1440, 980, 0, 'auto', 0, 'auto', 1440, 'fit', relative);
 	}
 }
