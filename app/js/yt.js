@@ -4,7 +4,7 @@
 	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
-/*global app, $, YT */
+/*global app, $, YT, TweenMax */
 app.partial.yt = function(){
 	// 2. This code loads the IFrame Player API code asynchronously.
 	var tag = document.createElement('script');
@@ -59,7 +59,7 @@ app.partial.yt = function(){
 				iframeY = 0,
 				iframeW = w,
 				iframeH = h;
-				
+
 		}).trigger('resize');
 
 		$('.otv .poster .play').on('click', function(){
