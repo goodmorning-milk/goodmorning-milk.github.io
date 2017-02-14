@@ -93,6 +93,19 @@ app.partial.yt = function(){
 				}, 25);
 			}
 		});
+		$('.videos .video a').on('click', () => {
+			player.pauseVideo();
+			var vid = $(this).attr('data-href');
+			player = new YT.Player('player', {
+				height: '1920',
+				width: '1080',
+				videoId: vid,
+				events: {
+					'onReady': () =>{},
+					'onStateChange': () =>{}
+				}
+			});
+		});
 	}
 
 
