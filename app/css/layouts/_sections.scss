@@ -307,7 +307,7 @@
 	}
 	figure{
 		background-size: 100% auto;
-		@include Item(1440, 980, 0, 'auto', 0, 'auto', 1440, 'fit', relative);
+		@include Item(1920, 965, 0, 'auto', 0, 'auto', 1920, 'fit', relative);
 	}
 }
 

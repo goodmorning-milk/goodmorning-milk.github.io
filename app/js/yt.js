@@ -94,6 +94,7 @@ app.partial.yt = function(){
 			}
 		});
 		$('.videos .video a').on('click', () => {
+			console.log(this)
 			if(player.pauseVideo){
 				player.pauseVideo();
 			}
@@ -104,6 +105,7 @@ app.partial.yt = function(){
 				height: '1920',
 				width: '1080',
 				videoId: vid,
+				autoplay: 1,
 				events: {
 					'onReady': () =>{
 						$('.lightbox').addClass('in');
