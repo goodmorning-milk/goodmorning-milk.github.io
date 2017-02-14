@@ -16,7 +16,8 @@
 	}
 	.rear{
 		height: 450px;
-		width: per(1300, 1440);
+		width: per(1410, 1440);
+		width: calc(100% - 60px);
 		margin: 0 auto;
 		font-weight: 300;
 		color: #fff;
