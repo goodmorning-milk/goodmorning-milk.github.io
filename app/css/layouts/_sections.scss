@@ -82,7 +82,7 @@
 			// border: 3px solid #f69100;
 			// border-width: 1px 1px 1px 1px;
 			display: inline-block;
-			transition-duration: 0.15s;
+			transition-duration: 0.35s;
 			figure{
 				@include SubItem();
 				img{
@@ -102,6 +102,15 @@
 				img{
 					transform-origin: right bottom 1px;
 					transform: scale( .995);
+				}
+			}
+
+			&:active{
+				// transition-duration: 0.25s;
+				box-shadow: 2px 3px 5px rgba(0,0,0,0.25) inset;
+				img{
+					transform-origin: right bottom 1px;
+					transform: scale( .992);
 				}
 			}
 		}
@@ -250,6 +259,10 @@
 		@include animation(
 			fade 0.5s 1 linear forwards 0s
 		);
+
+		.player{
+			position: relative;
+		}
 	}
 }
 
@@ -259,10 +272,10 @@
 	margin-right: auto;
 	width: 100%;
 	position: relative;
-	padding-top: per(1, 1440);
+	// padding-top: per(1, 1440);
 	// max-width: 1440px;
 	.player{
-		@include Item(1440, 795, 20, 'auto', 0, 'auto', 1440, 'fit', absolute);
+		@include Item(1440, 795, 0, 'auto', 0, 'auto', 1440, 'fit', absolute);
 		// opacity: 0;
 		transition: 0.3s;
 		iframe{
@@ -302,7 +315,7 @@
 	}
 	figure.poster{
 		background-size: cover;
-		@include Item(1440, 795, 19, 'auto', 0, 'auto', 1440, 'fit', relative);
+		@include Item(1440, 795, 0, 'auto', 0, 'auto', 1440, 'fit', relative);
 
 		.play figure{
 			@include SubItem();

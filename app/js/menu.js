@@ -16,6 +16,12 @@ app.partial.menu = function(){
 
 	$('header nav a').on('click', function(){
 		$('.lightbox').removeClass('in');
+		if(window.player.pauseVideo){
+			window.player.pauseVideo();
+		}
+		if(window.otv.pauseVideo){
+			window.otv.pauseVideo();
+		}
 	});
 	$('header nav a:eq(0)').on('click', function(){
 		TweenMax.to('html, body', 0.5, {

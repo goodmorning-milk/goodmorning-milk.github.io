@@ -4,7 +4,7 @@
 	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
-/*global app, $, YT, TweenMax */
+/*global app, $, YT, TweenMax , window*/
 app.partial.yt = function(){
 	// 2. This code loads the IFrame Player API code asynchronously.
 	var tag = document.createElement('script');
@@ -29,6 +29,8 @@ app.partial.yt = function(){
 
 
 		init(player);
+
+		window.otv = player;
 
 	};
 
@@ -94,13 +96,13 @@ app.partial.yt = function(){
 			}
 		});
 		$('.videos .video a').on('click', (e) => {
-			console.log(e.target);
-			if(player.pauseVideo){
-				player.pauseVideo();
+			// console.log(e.target);
+			if(otv.pauseVideo){
+				otv.pauseVideo();
 			}
 			
 			var vid = $(e.target).attr('data-vid');
-			console.log($(e.target).attr('data-vid'));
+			// console.log($(e.target).attr('data-vid'));
 			$('.lightbox').html('').append(`<div id='player'></div>`);
 			window.player = new YT.Player('player', {
 				height: '1920',
@@ -123,7 +125,6 @@ app.partial.yt = function(){
 			});
 			var src = $('#player').attr('src').replace(/https[:]\/\//, '//');
 			$('#player').attr('src', src);
-
 		});
 	}
 
