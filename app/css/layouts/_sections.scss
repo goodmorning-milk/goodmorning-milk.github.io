@@ -77,20 +77,32 @@
 		letter-spacing: 0;
 		margin: 0;
 		a{
-			background: #f69100;
 			@include Item(98/6,98/6,0,0,0,2/5,100,'fit', relative);
-
+			background: #f69100;
+			// border: 3px solid #f69100;
+			// border-width: 1px 1px 1px 1px;
 			display: inline-block;
+			transition-duration: 0.15s;
 			figure{
 				@include SubItem();
 				img{
 					max-width: 100%;
+					transition-duration: 0.15s;
 					width: per(158, 219);
 				}
 			}
 
 			&:first-child{
 				margin-left: 0;
+			}
+
+			&:hover{
+				// transition-duration: 0.25s;
+				box-shadow: 1px 2px 5px rgba(0,0,0,0.25) inset;
+				img{
+					transform-origin: right bottom 1px;
+					transform: scale( .995);
+				}
 			}
 		}
 	}
