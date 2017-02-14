@@ -94,7 +94,7 @@ app.partial.yt = function(){
 			}
 		});
 		$('.videos .video a').on('click', () => {
-			console.log(this)
+			console.log(this);
 			if(player.pauseVideo){
 				player.pauseVideo();
 			}
