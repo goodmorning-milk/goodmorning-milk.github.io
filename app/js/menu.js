@@ -14,6 +14,9 @@ app.partial.menu = function(){
 		}
 	});
 
+	$('header nav a').on('click', function(){
+		$('.lightbox').removeClass('in');
+	});
 	$('header nav a:eq(0)').on('click', function(){
 		TweenMax.to('html, body', 0.5, {
 			scrollTop: 0

@@ -94,17 +94,24 @@ app.partial.yt = function(){
 			}
 		});
 		$('.videos .video a').on('click', () => {
-			player.pauseVideo();
-			var vid = $(this).attr('data-href');
+			if(player.pauseVideo){
+				player.pauseVideo();
+			}
+			var vid = $(this).attr('data-vid');
+			console.log(vid);
+			$('.lightbox').html('').append(`<div id='player'></div>`);
 			player = new YT.Player('player', {
 				height: '1920',
 				width: '1080',
 				videoId: vid,
 				events: {
-					'onReady': () =>{},
+					'onReady': () =>{
+						$('.lightbox').addClass('in');
+					},
 					'onStateChange': () =>{}
 				}
 			});
+
 		});
 	}
 
