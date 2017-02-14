@@ -97,13 +97,13 @@ app.partial.yt = function(){
 		});
 		$('.videos .video a').on('click', (e) => {
 			// console.log(e.target);
-			if(otv.pauseVideo){
-				otv.pauseVideo();
+			if(window.otv.pauseVideo){
+				window.otv.pauseVideo();
 			}
 			
 			var vid = $(e.target).attr('data-vid');
 			// console.log($(e.target).attr('data-vid'));
-			$('.lightbox').html('').append(`<div id='player'></div>`);
+			$('.lightbox .player').html('').append(`<div id='player'></div>`);
 			window.player = new YT.Player('player', {
 				height: '1920',
 				width: '1080',
