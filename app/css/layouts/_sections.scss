@@ -2,10 +2,13 @@
 	padding: 0;
 	@include SubItem();
 
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		margin-top: em(50, $font-size-base-num);
+	}
 }
 .content-top{
 	min-height: 730px;
-	height: 100vh!important;
+	height: 100vh;
 	background: #ffa200;
 	width: 100%;
 	.center{
@@ -28,12 +31,40 @@
 		figure{
 			position: relative;
 			width: 95%;
+			@media screen and (max-width: #{$screen-xs - 1}) {
+				width: 100%;
+			}
 			.search{
 				position: absolute;
 				left:0;
 				bottom:-5em;
 				padding-left: 0;
 				z-index: 1;
+				@media screen and (max-width: #{$screen-xs - 1}) {
+					position: relative;
+					width: 100%;
+					left:0;
+					bottom: auto;
+					z-index: 1;
+					margin-top: 5%;
+					letter-spacing: -1px;
+					&:before{
+						display: none;
+					}
+					textarea{
+						width: per(253, 320);
+						height: 4em;
+						height: vwxs(60);
+						line-height: 1.6em;
+						padding: 0.5em;
+						resize: none;
+						border: 0;
+						&:focus{
+							outline: none;
+						}
+
+					}
+				}
 				input{
 					padding: 0.8em 1em;
 					color: #141414;
@@ -51,6 +82,16 @@
 					vertical-align: middle;
 					text-align: center;
 					background: #fff;
+					@media screen and (max-width: #{$screen-xs - 1}) {
+						@include Item(60, 60, 0, 0, 0, 4, 320, 'fit', relative);
+						img{
+							position: absolute;
+							top: per(12, 60);
+							left: per(12, 60);
+							width: per(36, 60);
+							height: per(36, 60);
+						}
+					}
 				}
 				::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 				  color: #141414;
@@ -67,22 +108,57 @@
 			}
 
 		}
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			width: 100%;
+			overflow:hidden;
+			height: auto;
+		}
+	}
+
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		.office{
+			width: per(109, 320);
+			margin: per(14, 320) 0 0 per(6, 320);
+		}
+		.hello{
+			line-height: 1em;
+			.o{
+				display: inline-block;
+				margin-top: -0.8em;
+			}
+		}
 	}
 	.nav-container{
 		position: absolute;
 		bottom: 0;
 		width: 100%;
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			position: relative;
+		}
 	}
 	nav{
 		letter-spacing: 0;
 		margin: 0;
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			width: 92%;
+			height: auto;
+			margin: 4% auto 1%;
+		}
 		a{
 			@include Item(98/6,98/6,0,0,0,2/5,100,'fit', relative);
 			background: #f69100;
-			// border: 3px solid #f69100;
-			// border-width: 1px 1px 1px 1px;
 			display: inline-block;
 			transition-duration: 0.35s;
+			@media screen and (max-width: #{$screen-xs - 1}) {
+				box-shadow: 1px -2px 5px rgba(0,0,0,0.2) inset;
+				@include Item(99/2,99/2,1,0,0,0,100,'fit', relative);
+				&:nth-child(even){
+					margin-left: 0.5%;
+				}
+				&:nth-child(odd){
+					margin-right: 0.5%;
+				}
+			}
 			figure{
 				@include SubItem();
 				img{
@@ -92,8 +168,10 @@
 				}
 			}
 
-			&:first-child{
-				margin-left: 0;
+			@media screen and (min-width: $screen-xs) {
+				&:first-child{
+					margin-left: 0;
+				}
 			}
 
 			&:hover{
@@ -114,6 +192,13 @@
 				}
 			}
 		}
+	}
+
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		width: 100%;
+		overflow:hidden;
+		min-height: 0;
+		height: auto;
 	}
 }
 .videos{
@@ -264,6 +349,41 @@
 			@include SubItem();
 			position: relative;
 		}
+
+		nav{
+			position: absolute;
+			bottom: 0.3em;
+			right: 0.3em;
+			z-index: 10;
+			a{
+				display: inline-block;
+				padding: 0.3em 0.25em;
+				color: #fff;
+				&:active, &:focus{
+					color: inherit;
+				}
+				background: #d10000;
+				span{
+					line-height: 1em;
+					display: inline-block;
+					height: 1.1em;
+					padding-right: 0.3em;
+					border-right: 1px solid #ef7f7f;
+					&:after{
+						display: inline-block;
+						content:'';
+						line-height: 1em;
+						height: 1.1em;
+						margin-left: em(11,28);
+						position: absolute;
+						border-left: 1px solid #6d0000;
+					}
+				}
+				img{
+
+				}
+			}
+		}
 	}
 }
 
@@ -275,10 +395,17 @@
 	position: relative;
 	// padding-top: per(1, 1440);
 	// max-width: 1440px;
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		background: url(../img/otv-background@320.png) center 0/ 100% auto no-repeat #ededeb;
+		@include Item(320, 216, 0, 'auto', 0, 'auto', 320, 'fit', relative);
+	}
 	.player{
 		@include Item(1440, 795, 0, 'auto', 0, 'auto', 1440, 'fit', absolute);
 		// opacity: 0;
 		transition: 0.3s;
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			width: 92%;
+		}
 		iframe, #otv{
 			@include SubItem();
 		}
@@ -318,10 +445,28 @@
 		background-size: cover;
 		@include Item(1440, 795, 0, 'auto', 0, 'auto', 1440, 'fit', relative);
 
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			// background: #f69100 center center/ 98% no-repeat;
+			@include Item(280, 166, 7, 0, 0, 20, 320, 'fit', absolute);
+		}
 		.play figure{
 			@include SubItem();
 			background-repeat: no-repeat;
 			background-position: center;
+			@media screen and (max-width: #{$screen-xs - 1}) {
+				background-size: auto per(109,181);
+			}
+		}
+	}
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		&:before{
+			content: '';
+			@include SubItem();
+			background: #f69100;
+			width: 92%;
+			margin: 0 4%;
+			height: per(181, 216);
+			box-shadow: 1px 2px 5px rgba(0,0,0,0.25) inset;
 		}
 	}
 }
@@ -337,6 +482,9 @@
 	figure{
 		background-size: 100% auto;
 		@include Item(1920, 965, 0, 'auto', 0, 'auto', 1920, 'fit', relative);
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			@include Item(320, 634, 0, 0, 0, 0, 320, 'fit', absolute);
+		}
 	}
 }
 

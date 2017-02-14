@@ -2,7 +2,7 @@
   @return #{$pixels/$context*100}vw;
 }
 
-@function vwxs($pixels, $context: $screen-xs-num) {
+@function vwxs($pixels, $context: 320) {
   @return #{$pixels/$context*100}vw;
 }
 
@@ -46,6 +46,13 @@
 			font-size: #{$i}px;
 			font-size: percentage($i/$font-size-base-num);
 			font-size: vwsm($i);
+		}
+	}
+	.fontsize-xs-#{$i} {
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			font-size: #{$i}px;
+			font-size: percentage($i/$font-size-base-num);
+			font-size: vwxs($i);
 		}
 	}
 }

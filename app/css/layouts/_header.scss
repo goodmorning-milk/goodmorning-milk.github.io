@@ -18,6 +18,13 @@ header {
 		position: absolute;
 		right: 0.5em;
 		height: 100%;
+		@media screen and (max-width: #{$screen-xs - 1}) {
+			right: 0.5em;
+			img{
+				transform: scale(0.85);
+				transform-origin: right center 1px;
+			}
+		}
 	}
 
 	i.menu{
@@ -97,6 +104,15 @@ header {
 		}
 		&.on{
 			height: 230px;
+			@media screen and (max-width: #{$screen-xs - 1}) {
+				width: 10em;
+				height: 10em;
+				a{
+					span{
+						width: 90%;
+					}
+				}
+			}
 			a{
 				width: 100%;
 				transform: none; 
@@ -118,6 +134,17 @@ header {
 	}
 
 
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		width: 100vw;
+		width: 100%;
+		height: em(50, $font-size-base-num);
+		nav{
+			line-height: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
 }
 .menu-overlay{
 	z-index: 10;

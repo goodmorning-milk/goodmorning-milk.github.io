@@ -38,20 +38,33 @@ app.partial.menu = function(){
 	});
 
 	var videoNav = $('.nav-container');
-	videoNav.find('a:eq(0), a:eq(1)').on('click', () => {
+	videoNav.find('a:eq(0), a:eq(1)').on('click', function() {
+		if($(window).width() <= 768 || $('html.ios,html.mobile,html.tablet').length){
+			$('.videos .video').eq($(this).index()).trigger('click');
+			return;
+		}
 		TweenMax.to('html, body', 0.5, {
 			scrollTop: $('.videos .video:eq(0)').offset().top - 44
 		});
 	});
-	videoNav.find('a:eq(2), a:eq(3)').on('click', () => {
+	videoNav.find('a:eq(2), a:eq(3)').on('click', function() {
+		if($(window).width() <= 768 || $('html.ios,html.mobile,html.tablet').length){
+			$('.videos .video').eq($(this).index()).trigger('click');
+			return;
+		}
 		TweenMax.to('html, body', 0.5, {
 			scrollTop: $('.videos .video:eq(2)').offset().top - 44
 		});
 	});
-	videoNav.find('a:eq(4), a:eq(5)').on('click', () => {
+	videoNav.find('a:eq(4), a:eq(5)').on('click', function() {
+		if($(window).width() <= 768 || $('html.ios,html.mobile,html.tablet').length){
+			$('.videos .video').eq($(this).index()).trigger('click');
+			return;
+		}
 		TweenMax.to('html, body', 0.5, {
 			scrollTop: $('.videos .video:eq(4)').offset().top - 44
 		});
 	});
+
 
 };

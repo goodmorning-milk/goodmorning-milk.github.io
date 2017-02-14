@@ -44,12 +44,12 @@
       </span>
 
       <a class="burger vertical-middle" href="javascript:">
-        <img src="img/icons.png" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="menu"></i>
+        <img src="img/icons.png" >&nbsp;&nbsp;&nbsp;<span class="hidden-xs">&nbsp;&nbsp;</span><i class="menu"></i>
       </a>
 
 
       <!--中文選單-->
-      <nav class="visible-zh pull-right fontsize-26">
+      <nav class="visible-zh pull-right fontsize-26 fontsize-xs-25">
         <a href="javascript:" data-href="javascript:">
           <span>office專業裝忙版</span>
         </a>
@@ -75,12 +75,18 @@
           <aside class="center">
             <aside class="vertical-middle rear">
               <figure class="vertical-bottom">
-                <img src="img/office.png">
-                <span class="fontsize-60">你好!</span>
-                <aside class="search fontsize-16 vertical-top">
-                  <input type="text" placeholder="Office全新升級！讓老闆覺得你忙疲勞感減半！專業感破百馬上晉升辦公室的佼佼者">
+                <img class="office" src="img/office.png">
+                <span class="fontsize-60 hello">
+                  <span class="fontsize-xs-42">你好!</span>
+                  <span class="fontsize-xs-21 visible-xs o"><br>Office全新升級！</span>
+                </span>
+                <aside class="search vertical-top">
+                  <input class="hidden-xs fontsize-16" type="text" placeholder="Office全新升級！讓老闆覺得你忙疲勞感減半！專業感破百馬上晉升辦公室的佼佼者">
+                  <textarea class="visible-xs-inline fontsize-xs-14" type="text" placeholder="讓老闆覺得你忙疲勞感減半！
+專業感破百馬上晉升辦公室的佼佼者"></textarea>
                   <a class="search-btn">
-                    <img data-src="img/search-icon.png">
+                    <img class="hidden-xs" data-src="img/search-icon.png">
+                    <img class="visible-xs-inline" data-src="img/search-icon@320.png">
                   </a>
                 </aside>
               </figure>
@@ -119,7 +125,7 @@
           </aside>
         </section>
 
-        <section class="videos">
+        <section class="videos hidden-xs">
           <aside class="row center">
             <figure class="video video-1">
               <figure class="poster" data-src="img/videos/word-poster.png">
@@ -188,12 +194,23 @@
             <div class="player">
               <div id="player"></div>
             </div>
+
+            <nav class="fontsize-28">
+              <a href="javascript:">
+                <span>選擇其他工具</span>
+                <img data-src="img/arrow.png">
+              </a>
+              <a href="javascript:">
+                <span>分享裝忙工具</span>
+                <img data-src="img/arrow.png">
+              </a>
+            </nav>
           </aside>
 
         </section>
 
         <section class="otv">
-          <figure class="player">
+          <figure class="player hidden-xs">
             <!-- <iframe src="https://www.youtube.com/embed/wEvR4P6jSEo?modestbranding=1&iv_load_policy=3&enablejsapi=1&version=3&controls=0&showinfo=0&loop=1&vq=hd720&playlist=wEvR4P6jSEo" frameborder="0" allowfullscreen></iframe> -->
             <div id="otv"></div>
             <figure class="duration hidden-xs">
@@ -212,7 +229,9 @@
 
         <section class="kv">
           <aside class="center">
-            <figure class="poster" data-src="img/kv_1920.png">
+            <figure class="poster hidden-xs" data-src="img/kv_1920.png">
+            </figure>
+            <figure class="poster visible-xs" data-src="img/kv_320.png">
             </figure>
           </aside>
         </section>

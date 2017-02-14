@@ -24,28 +24,26 @@ app.partial.yt = function(){
 		
 		// console.log(1);
 		// $('.otv iframe').attr('id', 'otv');
-		var player = new YT.Player('otv', {
+		var pl = new YT.Player('otv', {
 			height: '1920',
 			width: '1080',
 			videoId: 'wEvR4P6jSEo',
 
 			playerVars: {
-				autoplay: 1,
-				controls: 0,
-				loop: 1,
-				playlist: 'wEvR4P6jSEo'
+				autoplay: 0,
+				controls: 0
 			},
 			events: {
 				'onReady': () =>{},
 				'onStateChange': () =>{}
 			}
 		});
-		player.pe = $('.otv');
+		pl.pe = $('.otv');
 
 
-		init(player);
+		init(pl);
 
-		window.otv = player;
+		window.otv = pl;
 
 	};
 
@@ -60,7 +58,7 @@ app.partial.yt = function(){
 		}, 1500);
 	});
 
-	function init(player){
+	function init(pl){
 
 
 		$(window).on('resize', function(){
@@ -80,27 +78,27 @@ app.partial.yt = function(){
 		}).trigger('resize');
 
 		$('.otv .poster .play').one('click', function(){
-			player.seekTo(18);
+			pl.seekTo(18);
 		}).on('click', function(){
 			var playing = $('.otv .poster').hasClass('fade in');
 			if(!playing){
 				$('.otv .poster').css('background-image', 'none');
 				$('.otv .poster').addClass('fade in');
-				player.pauseVideo();				
+				pl.pauseVideo();				
 			}else{
 				$('.otv .poster').addClass('fade').removeClass('in');
 				TweenMax.to('html, body', 0.5, {
 					scrollTop: $('.otv').offset().top
 				});
-				player.playVideo();
+				pl.playVideo();
 
 				var fragTick = 0;
-				var totalTime = player.getDuration();
+				var totalTime = pl.getDuration();
 
 				clearInterval(fragTick);
 				fragTick = setInterval(function(){
-					var fragPercent = player.getVideoLoadedFraction() * 100;
-					var currentTime = player.getCurrentTime();
+					var fragPercent = pl.getVideoLoadedFraction() * 100;
+					var currentTime = pl.getCurrentTime();
 					var played = currentTime/totalTime * 100;
 					$('.duration .played', $('.otv .player')).width(played + '%');
 
@@ -110,6 +108,7 @@ app.partial.yt = function(){
 				}, 25);
 			}
 		});
+		var sk = 0;
 		$('.videos .video a').on('click', (e) => {
 			// console.log(e.target);
 			if(window.otv.pauseVideo){
@@ -134,8 +133,23 @@ app.partial.yt = function(){
 					'onReady': () =>{
 						$('.lightbox').addClass('in');
 						player.playVideo();
+
+						clearInterval(sk);
+						sk = setInterval(function(){
+							// console.log(player.getDuration);
+							var totalTime = player.getDuration();
+							// console.log(player.getCurrentTime);
+							var currentTime = player.getCurrentTime();
+							var played = currentTime/totalTime * 100;
+							// console.log(played);
+							if(played>95){
+								player.seekTo(0);
+							}
+						}, 25);
 					},
-					'onStateChange': () =>{}
+					'onStateChange': () =>{
+
+					}
 				}
 			});
 			// var src = $('#player').attr('src').replace(/https[:]\/\//, '//');
