@@ -93,22 +93,30 @@ app.partial.yt = function(){
 				}, 25);
 			}
 		});
-		$('.videos .video a').on('click', () => {
-			console.log(this);
+		$('.videos .video a').on('click', (e) => {
+			console.log(e.target);
 			if(player.pauseVideo){
 				player.pauseVideo();
 			}
-			var vid = $(this).attr('data-vid');
-			console.log($(this).attr('data-vid'));
+			
+			var vid = $(e.target).attr('data-vid');
+			console.log($(e.target).attr('data-vid'));
 			$('.lightbox').html('').append(`<div id='player'></div>`);
-			player = new YT.Player('player', {
+			window.player = new YT.Player('player', {
 				height: '1920',
 				width: '1080',
 				videoId: vid,
-				autoplay: 1,
+
+				playerVars: {
+					autoplay: 1,
+					controls: 0,
+					loop: 1,
+					playlist: vid
+				},
 				events: {
 					'onReady': () =>{
 						$('.lightbox').addClass('in');
+						player.playVideo();
 					},
 					'onStateChange': () =>{}
 				}
