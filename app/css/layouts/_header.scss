@@ -56,7 +56,7 @@ header {
 		a{
 			display: inline-block;	
 			padding: 0.5em 0.5em;
-			background: rgba(0,0,0,0.7);
+			background: rgba(0,0,0,0.95);
 			// transition-delay: 0.1s;
 			transition-duration: 0.75s;
 			transition-property: background color transform;
@@ -68,14 +68,31 @@ header {
 			transform: scaleX(0);
 			transform-origin: right center 1px; 
 			opacity: 0;
-			&:hover{
-				background: rgba(255,255,255,0.7);
+			&:hover,&:active{
+				color: #000 !important;
+				background: rgba(255,255,255,0.95);
+			}
+			&:focus{
+				color: #fff;
 			}
 			span{
 				font-weight: 100;
 				width: 210px;
 				display: block;
 				height: 1em;
+			}
+			&[disabled]{
+				pointer-events: none;
+				span{
+					opacity: 0.5;
+					&:after{
+						display: inline-block;
+						font-size: 0.5em;
+						line-height: 0.5em;
+						padding-left: 0.2em;
+						content: 'coming soon';
+					}
+				}
 			}
 		}
 		&.on{
@@ -99,4 +116,16 @@ header {
 			}
 		}
 	}
+
+
+}
+.menu-overlay{
+	z-index: 10;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background: #000;
+	display: none;
 }
