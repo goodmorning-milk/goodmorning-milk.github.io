@@ -245,7 +245,7 @@
 		position: fixed;
 		top: 0;
 		width: 100%;
-		height: 100%;
+		// height: 100%;
 		left: 0;
 		z-index: 9;
 		iframe{
@@ -261,6 +261,7 @@
 		);
 
 		.player{
+			@include SubItem();
 			position: relative;
 		}
 	}
@@ -278,7 +279,7 @@
 		@include Item(1440, 795, 0, 'auto', 0, 'auto', 1440, 'fit', absolute);
 		// opacity: 0;
 		transition: 0.3s;
-		iframe{
+		iframe, #otv{
 			@include SubItem();
 		}
 		.duration{
@@ -384,5 +385,6 @@
 	}
 	100%{
 		opacity: 1;
+		height: 100%;
 	}
 }

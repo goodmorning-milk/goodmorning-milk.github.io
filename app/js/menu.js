@@ -21,7 +21,9 @@ app.partial.menu = function(){
 		}
 		if(window.otv.pauseVideo){
 			window.otv.pauseVideo();
+			$('.otv .poster').addClass('fade').removeClass('in');
 		}
+		$('header nav').removeClass('on');
 	});
 	$('header nav a:eq(0)').on('click', function(){
 		TweenMax.to('html, body', 0.5, {

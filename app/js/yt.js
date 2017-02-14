@@ -23,8 +23,23 @@ app.partial.yt = function(){
 		var players = [];
 		
 		// console.log(1);
-		$('.otv iframe').attr('id', 'otv');
-		var player = new YT.Player('otv');
+		// $('.otv iframe').attr('id', 'otv');
+		var player = new YT.Player('otv', {
+			height: '1920',
+			width: '1080',
+			videoId: 'wEvR4P6jSEo',
+
+			playerVars: {
+				autoplay: 1,
+				controls: 0,
+				loop: 1,
+				playlist: 'wEvR4P6jSEo'
+			},
+			events: {
+				'onReady': () =>{},
+				'onStateChange': () =>{}
+			}
+		});
 		player.pe = $('.otv');
 
 
@@ -65,7 +80,7 @@ app.partial.yt = function(){
 		}).trigger('resize');
 
 		$('.otv .poster .play').one('click', function(){
-			player.seekTo(16);
+			player.seekTo(18);
 		}).on('click', function(){
 			var playing = $('.otv .poster').hasClass('fade in');
 			if(!playing){
@@ -87,7 +102,7 @@ app.partial.yt = function(){
 					var fragPercent = player.getVideoLoadedFraction() * 100;
 					var currentTime = player.getCurrentTime();
 					var played = currentTime/totalTime * 100;
-					$('.duration .played', $('.player')).width(played + '%');
+					$('.duration .played', $('.otv .player')).width(played + '%');
 
 					if(fragPercent < 100){
 						$('.duration .downloaded', $('.player')).width(fragPercent + '%');
@@ -123,8 +138,8 @@ app.partial.yt = function(){
 					'onStateChange': () =>{}
 				}
 			});
-			var src = $('#player').attr('src').replace(/https[:]\/\//, '//');
-			$('#player').attr('src', src);
+			// var src = $('#player').attr('src').replace(/https[:]\/\//, '//');
+			// $('#player').attr('src', src);
 		});
 	}
 
