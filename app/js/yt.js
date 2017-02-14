@@ -98,7 +98,7 @@ app.partial.yt = function(){
 				player.pauseVideo();
 			}
 			var vid = $(this).attr('data-vid');
-			console.log(vid);
+			console.log($(this).attr('data-vid'));
 			$('.lightbox').html('').append(`<div id='player'></div>`);
 			player = new YT.Player('player', {
 				height: '1920',
@@ -111,6 +111,8 @@ app.partial.yt = function(){
 					'onStateChange': () =>{}
 				}
 			});
+			var src = $('#player').attr('src').replace(/https[:]\/\//, '//');
+			$('#player').attr('src', src);
 
 		});
 	}
