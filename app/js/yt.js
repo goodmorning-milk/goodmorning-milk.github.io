@@ -132,18 +132,18 @@ app.partial.yt = function(){
 				events: {
 					'onReady': () =>{
 						$('.lightbox').addClass('in');
-						player.playVideo();
+						window.player.playVideo();
 
 						clearInterval(sk);
 						sk = setInterval(function(){
 							// console.log(player.getDuration);
-							var totalTime = player.getDuration();
+							var totalTime = window.player.getDuration();
 							// console.log(player.getCurrentTime);
-							var currentTime = player.getCurrentTime();
+							var currentTime = window.player.getCurrentTime();
 							var played = currentTime/totalTime * 100;
 							// console.log(played);
 							if(played>95){
-								player.seekTo(0);
+								window.player.seekTo(0);
 							}
 						}, 25);
 					},
